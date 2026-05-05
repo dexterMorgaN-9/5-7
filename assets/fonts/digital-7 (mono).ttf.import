@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://j2tyifyrgeku"
-path="res://.godot/imported/digital-7 (mono).ttf-9e201f4553ebb62d667acdef8d9b363c.fontdata"
+path="res://.godot/imported/digital-7 (mono).ttf-a143ef22b4767f083f74900deec2f37a.fontdata"
 
 [deps]
 
-source_file="res://digital-7 (mono).ttf"
-dest_files=["res://.godot/imported/digital-7 (mono).ttf-9e201f4553ebb62d667acdef8d9b363c.fontdata"]
+source_file="res://assets/fonts/digital-7 (mono).ttf"
+dest_files=["res://.godot/imported/digital-7 (mono).ttf-a143ef22b4767f083f74900deec2f37a.fontdata"]
 
 [params]
 
