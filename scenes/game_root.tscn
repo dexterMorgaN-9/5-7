@@ -46,7 +46,7 @@ one_shot = true
 wait_time = 22.0
 one_shot = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=344075213]
+[node name="CodeDisplay" type="VBoxContainer" parent="." unique_id=344075213]
 visible = false
 offset_left = 340.0
 offset_top = 160.0
@@ -55,7 +55,7 @@ offset_bottom = 200.0
 theme_override_constants/separation = 18
 alignment = 1
 
-[node name="CodeTitle" type="Label" parent="VBoxContainer" unique_id=1162058921]
+[node name="CodeTitle" type="Label" parent="CodeDisplay" unique_id=1162058921]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.53333336, 0.53333336, 0.53333336, 1)
 theme_override_fonts/font = ExtResource("1_78s5d")
@@ -64,7 +64,7 @@ text = "MEMORIZE THESE CODES"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Code1" type="Label" parent="VBoxContainer" unique_id=1764668577]
+[node name="Code1" type="Label" parent="CodeDisplay" unique_id=1764668577]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 1, 0.26666668)
 theme_override_fonts/font = ExtResource("1_78s5d")
@@ -73,7 +73,7 @@ text = "-----"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Code2" type="Label" parent="VBoxContainer" unique_id=1870845279]
+[node name="Code2" type="Label" parent="CodeDisplay" unique_id=1870845279]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 1, 0.26666668)
 theme_override_fonts/font = ExtResource("1_78s5d")
@@ -82,7 +82,7 @@ text = "-----"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Code3" type="Label" parent="VBoxContainer" unique_id=1052345245]
+[node name="Code3" type="Label" parent="CodeDisplay" unique_id=1052345245]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 1, 0.26666668)
 theme_override_fonts/font = ExtResource("1_78s5d")
@@ -91,7 +91,7 @@ text = "-----"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Code4" type="Label" parent="VBoxContainer" unique_id=1312467114]
+[node name="Code4" type="Label" parent="CodeDisplay" unique_id=1312467114]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 1, 0.26666668)
 theme_override_fonts/font = ExtResource("1_78s5d")
@@ -100,7 +100,7 @@ text = "-----"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Code5" type="Label" parent="VBoxContainer" unique_id=781126780]
+[node name="Code5" type="Label" parent="CodeDisplay" unique_id=781126780]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 1, 0.26666668)
 theme_override_fonts/font = ExtResource("1_78s5d")
@@ -108,3 +108,91 @@ theme_override_font_sizes/font_size = 52
 text = "-----"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="BombContainer" type="HBoxContainer" parent="." unique_id=433114776]
+visible = false
+offset_left = 60.0
+offset_top = 180.0
+offset_right = 100.0
+offset_bottom = 220.0
+theme_override_constants/separation = 20
+
+[node name="StartPopup" type="Panel" parent="." unique_id=1719976764]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartLabel" type="Label" parent="StartPopup" unique_id=1677720050]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 300.0
+offset_right = 813.0
+offset_bottom = 479.0
+theme_override_colors/font_color = Color(0, 1, 0.25490198, 1)
+theme_override_fonts/font = ExtResource("1_78s5d")
+theme_override_font_sizes/font_size = 120
+text = "START
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WinScreen" type="Panel" parent="." unique_id=568396336]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DefusedLabel" type="Label" parent="WinScreen" unique_id=963571622]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 300.0
+offset_right = 845.0
+offset_bottom = 443.0
+theme_override_colors/font_color = Color(0, 1, 0.25490198, 1)
+theme_override_fonts/font = ExtResource("1_78s5d")
+theme_override_font_sizes/font_size = 96
+text = "DEFUSED
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerLabel" type="Label" parent="WinScreen" unique_id=1704382801]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 320.0
+offset_right = 580.0
+offset_bottom = 343.0
+theme_override_colors/font_color = Color(0.6666667, 1, 0.6666667, 1)
+theme_override_fonts/font = ExtResource("1_78s5d")
+theme_override_font_sizes/font_size = 26
+text = "\"\""
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="WinScreen" unique_id=1929033636]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 370.0
+offset_right = 580.0
+offset_bottom = 393.0
+theme_override_colors/font_color = Color(0.53333336, 0.53333336, 0.53333336, 1)
+theme_override_fonts/font = ExtResource("1_78s5d")
+theme_override_font_sizes/font_size = 22
+text = "\"\""
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="WinScreen" unique_id=306762296]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Button2" type="Button" parent="WinScreen" unique_id=1756894291]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
