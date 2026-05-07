@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://g5p7gv1om85d"]
 
+[ext_resource type="FontFile" uid="uid://j2tyifyrgeku" path="res://assets/fonts/digital-7 (mono).ttf" id="1_78s5d"]
+
 [node name="GameRoot" type="Node2D" unique_id=439273158]
 
 [node name="Background" type="ColorRect" parent="." unique_id=2111222225]
@@ -12,5 +14,97 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="PhaseLabel" type="Label" parent="." unique_id=606157185]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 490.0
+offset_top = 30.0
+offset_right = 577.0
+offset_bottom = 53.0
+theme_override_colors/font_color = Color(0, 1, 0.25490198, 1)
+theme_override_fonts/font = ExtResource("1_78s5d")
+theme_override_font_sizes/font_size = 24
+text = "MEMORIZE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimerDisplay" type="Label" parent="." unique_id=1549602358]
+offset_left = 440.0
+offset_top = 60.0
+offset_right = 571.0
+offset_bottom = 169.0
+theme_override_colors/font_color = Color(0, 1, 0.25490198, 1)
+theme_override_fonts/font = ExtResource("1_78s5d")
+theme_override_font_sizes/font_size = 72
+text = "10.0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MemorizeTimer" type="Timer" parent="." unique_id=1292574439]
+wait_time = 10.0
+one_shot = true
+
+[node name="DefuseTimer" type="Timer" parent="." unique_id=647823251]
+wait_time = 22.0
+one_shot = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=344075213]
+visible = false
+offset_left = 340.0
+offset_top = 160.0
+offset_right = 380.0
+offset_bottom = 200.0
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="CodeTitle" type="Label" parent="VBoxContainer" unique_id=1162058921]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.53333336, 0.53333336, 0.53333336, 1)
+theme_override_fonts/font = ExtResource("1_78s5d")
+theme_override_font_sizes/font_size = 18
+text = "MEMORIZE THESE CODES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Code1" type="Label" parent="VBoxContainer" unique_id=1764668577]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 1, 0.26666668)
+theme_override_fonts/font = ExtResource("1_78s5d")
+theme_override_font_sizes/font_size = 52
+text = "-----"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Code2" type="Label" parent="VBoxContainer" unique_id=1870845279]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 1, 0.26666668)
+theme_override_fonts/font = ExtResource("1_78s5d")
+theme_override_font_sizes/font_size = 52
+text = "-----"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Code3" type="Label" parent="VBoxContainer" unique_id=1052345245]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 1, 0.26666668)
+theme_override_fonts/font = ExtResource("1_78s5d")
+theme_override_font_sizes/font_size = 52
+text = "-----"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Code4" type="Label" parent="VBoxContainer" unique_id=1312467114]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 1, 0.26666668)
+theme_override_fonts/font = ExtResource("1_78s5d")
+theme_override_font_sizes/font_size = 52
+text = "-----"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Code5" type="Label" parent="VBoxContainer" unique_id=781126780]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 1, 0.26666668)
+theme_override_fonts/font = ExtResource("1_78s5d")
+theme_override_font_sizes/font_size = 52
+text = "-----"
+horizontal_alignment = 1
+vertical_alignment = 1
