@@ -187,12 +187,80 @@ text = "\"\""
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="WinScreen" unique_id=306762296]
+[node name="PlayAgainBtn" type="Button" parent="WinScreen" unique_id=306762296]
+custom_minimum_size = Vector2(300, 56)
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 390.0
+offset_top = 450.0
+offset_right = 690.0
+offset_bottom = 506.0
+theme_override_fonts/font = ExtResource("1_78s5d")
+theme_override_font_sizes/font_size = 28
+text = "PLAY AGAIN"
 
-[node name="Button2" type="Button" parent="WinScreen" unique_id=1756894291]
+[node name="ExitBtn" type="Button" parent="WinScreen" unique_id=1756894291]
+custom_minimum_size = Vector2(300, 56)
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 390.0
+offset_top = 520.0
+offset_right = 690.0
+offset_bottom = 576.0
+theme_override_fonts/font = ExtResource("1_78s5d")
+theme_override_font_sizes/font_size = 28
+text = "EXIT"
+
+[node name="FailScreen" type="Panel" parent="." unique_id=652394207]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FailLabel" type="Label" parent="FailScreen" unique_id=2040381583]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 200.0
+offset_right = 802.0
+offset_bottom = 270.0
+theme_override_colors/font_color = Color(1, 0.13333334, 0.13333334, 1)
+theme_override_fonts/font = ExtResource("1_78s5d")
+theme_override_font_sizes/font_size = 96
+text = "FAILED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BoomLabel" type="Label" parent="FailScreen" unique_id=1537588655]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 310.0
+offset_right = 627.0
+offset_bottom = 345.0
+theme_override_colors/font_color = Color(1, 0.4, 0, 1)
+theme_override_fonts/font = ExtResource("1_78s5d")
+theme_override_font_sizes/font_size = 48
+text = "BOOM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayAgainBtn" type="Button" parent="FailScreen" unique_id=751080704]
+custom_minimum_size = Vector2(300, 56)
+layout_mode = 0
+offset_left = 390.0
+offset_top = 450.0
+offset_right = 690.0
+offset_bottom = 506.0
+theme_override_fonts/font = ExtResource("1_78s5d")
+theme_override_font_sizes/font_size = 28
+text = "PLAY AGAIN"
+
+[node name="ExitBtn" type="Button" parent="FailScreen" unique_id=448866381]
+custom_minimum_size = Vector2(300, 56)
+layout_mode = 0
+offset_left = 390.0
+offset_top = 520.0
+offset_right = 690.0
+offset_bottom = 576.0
+theme_override_fonts/font = ExtResource("1_78s5d")
+theme_override_font_sizes/font_size = 28
+text = "EXIT"
