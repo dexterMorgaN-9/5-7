@@ -264,3 +264,15 @@ offset_bottom = 576.0
 theme_override_fonts/font = ExtResource("1_78s5d")
 theme_override_font_sizes/font_size = 28
 text = "EXIT"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1733418420]
+
+[node name="AudioManager" type="Node" parent="." unique_id=1581881942]
+
+[node name="BeepPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=1049351011]
+
+[node name="DefusePlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=1665295070]
+
+[node name="ExplosionPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=390941901]
+
+[node name="BGMPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=1553047045]
