@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://db8xnlbfj7876"]
+
+[node name="BombPanel" type="Panel" unique_id=150832375]
+
+[node name="Label" type="Label" parent="." unique_id=1130812943]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Label2" type="Label" parent="." unique_id=858580126]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Node2D" type="Node2D" parent="." unique_id=895095861]
+
+[node name="Line2D" type="Line2D" parent="Node2D" unique_id=2020693507]
+
+[node name="Line2D2" type="Line2D" parent="Node2D" unique_id=1141982415]
+
+[node name="Line2D3" type="Line2D" parent="Node2D" unique_id=561663527]
+
+[node name="Panel" type="Panel" parent="." unique_id=507968854]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LineEdit" type="LineEdit" parent="Panel" unique_id=664170030]
+layout_mode = 0
+offset_right = 68.5
+offset_bottom = 31.0
+
+[node name="Label" type="Label" parent="Panel" unique_id=492617534]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1917262788]

@@ -16,7 +16,7 @@ color = Color(0, 0, 0, 1)
 [node name="PhaseLabel" type="Label" parent="." unique_id=606157185]
 offset_left = 490.0
 offset_top = 30.0
-offset_right = 577.0
+offset_right = 597.0
 offset_bottom = 53.0
 theme_override_colors/font_color = Color(0, 1, 0.25490198, 1)
 theme_override_fonts/font = ExtResource("1_78s5d")
@@ -26,10 +26,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TimerDisplay" type="Label" parent="." unique_id=1549602358]
-offset_left = 440.0
-offset_top = 60.0
-offset_right = 571.0
-offset_bottom = 169.0
+offset_left = 475.0
+offset_top = 59.0
+offset_right = 606.0
+offset_bottom = 168.0
 theme_override_colors/font_color = Color(0, 1, 0.25490198, 1)
 theme_override_fonts/font = ExtResource("1_78s5d")
 theme_override_font_sizes/font_size = 72
