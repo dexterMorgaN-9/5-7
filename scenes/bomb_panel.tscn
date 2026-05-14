@@ -1,38 +1,96 @@
 [gd_scene format=3 uid="uid://db8xnlbfj7876"]
 
+[ext_resource type="FontFile" uid="uid://j2tyifyrgeku" path="res://assets/fonts/digital-7 (mono).ttf" id="1_b7g2j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_13d3s"]
+bg_color = Color(0.039215688, 0.039215688, 0.039215688, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 1, 0.25490198, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7g2j"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 1, 0.25490198, 1)
+
 [node name="BombPanel" type="Panel" unique_id=150832375]
+theme_override_styles/panel = SubResource("StyleBoxFlat_13d3s")
 
-[node name="Label" type="Label" parent="." unique_id=1130812943]
+[node name="BombNumLabel" type="Label" parent="." unique_id=1130812943]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 110.0
+offset_top = 18.0
+offset_right = 176.0
+offset_bottom = 49.0
+theme_override_colors/font_color = Color(0, 1, 0.25490198, 1)
+theme_override_fonts/font = ExtResource("1_b7g2j")
+theme_override_font_sizes/font_size = 18
+text = "BOMB 1/4
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="." unique_id=858580126]
+[node name="StatusLabel" type="Label" parent="." unique_id=858580126]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 110.0
+offset_top = 44.0
+offset_right = 150.0
+offset_bottom = 67.0
+theme_override_colors/font_color = Color(1, 0.26666668, 0.26666668, 1)
+theme_override_fonts/font = ExtResource("1_b7g2j")
+theme_override_font_sizes/font_size = 16
+text = "ARMED"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Node2D" type="Node2D" parent="." unique_id=895095861]
+[node name="WireDecor" type="Node2D" parent="." unique_id=895095861]
 
-[node name="Line2D" type="Line2D" parent="Node2D" unique_id=2020693507]
+[node name="WireRed" type="Line2D" parent="WireDecor" unique_id=2020693507]
+width = 3.0
+default_color = Color(1, 0.13333334, 0.13333334, 1)
 
-[node name="Line2D2" type="Line2D" parent="Node2D" unique_id=1141982415]
+[node name="WireBlue" type="Line2D" parent="WireDecor" unique_id=1141982415]
+width = 3.0
+default_color = Color(0.13333334, 0.4, 1, 1)
 
-[node name="Line2D3" type="Line2D" parent="Node2D" unique_id=561663527]
+[node name="WireYellow" type="Line2D" parent="WireDecor" unique_id=561663527]
+width = 3.0
+default_color = Color(1, 0.8, 0, 1)
 
-[node name="Panel" type="Panel" parent="." unique_id=507968854]
+[node name="DisplayScreen" type="Panel" parent="." unique_id=507968854]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 15.0
+offset_top = 155.0
+offset_right = 205.0
+offset_bottom = 245.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_b7g2j")
 
-[node name="LineEdit" type="LineEdit" parent="Panel" unique_id=664170030]
+[node name="CodeInput" type="LineEdit" parent="DisplayScreen" unique_id=664170030]
 layout_mode = 0
-offset_right = 68.5
-offset_bottom = 31.0
+offset_left = 10.0
+offset_top = 18.0
+offset_right = 180.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(0, 1, 0.25490198, 1)
+theme_override_fonts/font = ExtResource("1_b7g2j")
+theme_override_font_sizes/font_size = 32
+max_length = 6
+editable = false
 
-[node name="Label" type="Label" parent="Panel" unique_id=492617534]
+[node name="CursorBlank" type="Label" parent="DisplayScreen" unique_id=492617534]
+visible = false
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 155.0
+offset_top = 18.0
+offset_right = 195.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0, 1, 0.25490198, 1)
+theme_override_fonts/font = ExtResource("1_b7g2j")
+theme_override_font_sizes/font_size = 32
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1917262788]
