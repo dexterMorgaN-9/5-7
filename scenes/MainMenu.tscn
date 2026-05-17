@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bfcpr8fqeb8xy"]
 
-[ext_resource type="Script" uid="uid://if58xdhyve3j" path="res://MenuController.gd" id="1_0ykhv"]
+[ext_resource type="Script" uid="uid://if58xdhyve3j" path="res://scripts/MenuController.gd" id="1_0ykhv"]
 [ext_resource type="FontFile" uid="uid://j2tyifyrgeku" path="res://assets/fonts/digital-7 (mono).ttf" id="2_2wh52"]
 
 [node name="Control" type="Control" unique_id=351372045]
@@ -16,13 +16,13 @@ color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="." unique_id=37392992]
 layout_mode = 0
-offset_left = 403.0
-offset_top = -5.0
-offset_right = 725.0
-offset_bottom = 207.0
+offset_left = 207.0
+offset_top = -45.0
+offset_right = 906.0
+offset_bottom = 370.0
 theme_override_colors/font_color = Color(0, 1, 0.25490198, 1)
 theme_override_fonts/font = ExtResource("2_2wh52")
-theme_override_font_sizes/font_size = 196
+theme_override_font_sizes/font_size = 300
 text = "5:7"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -30,8 +30,10 @@ vertical_alignment = 1
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1137142459]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 369.0
+offset_top = 320.0
+offset_right = 788.0
+offset_bottom = 520.0
 theme_override_constants/separation = 16
 alignment = 1
 

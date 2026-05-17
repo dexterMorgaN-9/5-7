@@ -1,39 +1,46 @@
 [gd_scene format=3 uid="uid://g5p7gv1om85d"]
 
-[ext_resource type="FontFile" uid="uid://j2tyifyrgeku" path="res://assets/fonts/digital-7 (mono).ttf" id="1_78s5d"]
+[ext_resource type="Script" uid="uid://b7e1jl0aonk6n" path="res://scripts/GameController.gd" id="1_cpr0p"]
+[ext_resource type="FontFile" uid="uid://j2tyifyrgeku" path="res://assets/fonts/digital-7 (mono).ttf" id="2_78awf"]
+[ext_resource type="Script" uid="uid://vmt7c72u1lyy" path="res://scenes/audio_manager.gd" id="3_s0nni"]
 
 [node name="GameRoot" type="Node2D" unique_id=439273158]
+script = ExtResource("1_cpr0p")
 
 [node name="Background" type="ColorRect" parent="." unique_id=2111222225]
 z_index = -1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -47.0
+offset_top = -28.0
+offset_right = 1210.0
+offset_bottom = 643.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="PhaseLabel" type="Label" parent="." unique_id=606157185]
-offset_left = 490.0
-offset_top = 30.0
-offset_right = 597.0
-offset_bottom = 53.0
+offset_left = 186.0
+offset_top = -8.0
+offset_right = 869.0
+offset_bottom = 193.0
 theme_override_colors/font_color = Color(0, 1, 0.25490198, 1)
-theme_override_fonts/font = ExtResource("1_78s5d")
-theme_override_font_sizes/font_size = 24
+theme_override_fonts/font = ExtResource("2_78awf")
+theme_override_font_sizes/font_size = 167
 text = "MEMORIZE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TimerDisplay" type="Label" parent="." unique_id=1549602358]
-offset_left = 475.0
-offset_top = 59.0
-offset_right = 606.0
-offset_bottom = 168.0
+offset_left = -48.0
+offset_top = 200.0
+offset_right = 1031.0
+offset_bottom = 481.0
 theme_override_colors/font_color = Color(0, 1, 0.25490198, 1)
-theme_override_fonts/font = ExtResource("1_78s5d")
-theme_override_font_sizes/font_size = 72
-text = "10.0
+theme_override_fonts/font = ExtResource("2_78awf")
+theme_override_font_sizes/font_size = 190
+text = "10:0
 "
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -58,7 +65,7 @@ alignment = 1
 [node name="CodeTitle" type="Label" parent="CodeDisplay" unique_id=1162058921]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.53333336, 0.53333336, 0.53333336, 1)
-theme_override_fonts/font = ExtResource("1_78s5d")
+theme_override_fonts/font = ExtResource("2_78awf")
 theme_override_font_sizes/font_size = 18
 text = "MEMORIZE THESE CODES"
 horizontal_alignment = 1
@@ -67,7 +74,7 @@ vertical_alignment = 1
 [node name="Code1" type="Label" parent="CodeDisplay" unique_id=1764668577]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 1, 0.26666668)
-theme_override_fonts/font = ExtResource("1_78s5d")
+theme_override_fonts/font = ExtResource("2_78awf")
 theme_override_font_sizes/font_size = 52
 text = "-----"
 horizontal_alignment = 1
@@ -76,7 +83,7 @@ vertical_alignment = 1
 [node name="Code2" type="Label" parent="CodeDisplay" unique_id=1870845279]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 1, 0.26666668)
-theme_override_fonts/font = ExtResource("1_78s5d")
+theme_override_fonts/font = ExtResource("2_78awf")
 theme_override_font_sizes/font_size = 52
 text = "-----"
 horizontal_alignment = 1
@@ -85,7 +92,7 @@ vertical_alignment = 1
 [node name="Code3" type="Label" parent="CodeDisplay" unique_id=1052345245]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 1, 0.26666668)
-theme_override_fonts/font = ExtResource("1_78s5d")
+theme_override_fonts/font = ExtResource("2_78awf")
 theme_override_font_sizes/font_size = 52
 text = "-----"
 horizontal_alignment = 1
@@ -94,7 +101,7 @@ vertical_alignment = 1
 [node name="Code4" type="Label" parent="CodeDisplay" unique_id=1312467114]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 1, 0.26666668)
-theme_override_fonts/font = ExtResource("1_78s5d")
+theme_override_fonts/font = ExtResource("2_78awf")
 theme_override_font_sizes/font_size = 52
 text = "-----"
 horizontal_alignment = 1
@@ -103,7 +110,7 @@ vertical_alignment = 1
 [node name="Code5" type="Label" parent="CodeDisplay" unique_id=781126780]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 1, 0.26666668)
-theme_override_fonts/font = ExtResource("1_78s5d")
+theme_override_fonts/font = ExtResource("2_78awf")
 theme_override_font_sizes/font_size = 52
 text = "-----"
 horizontal_alignment = 1
@@ -118,7 +125,6 @@ offset_bottom = 220.0
 theme_override_constants/separation = 20
 
 [node name="StartPopup" type="Panel" parent="." unique_id=1719976764]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -127,14 +133,14 @@ grow_vertical = 2
 
 [node name="StartLabel" type="Label" parent="StartPopup" unique_id=1677720050]
 layout_mode = 0
-offset_left = 540.0
-offset_top = 300.0
-offset_right = 813.0
-offset_bottom = 479.0
+offset_left = 12.0
+offset_top = 130.0
+offset_right = 1103.0
+offset_bottom = 437.0
 theme_override_colors/font_color = Color(0, 1, 0.25490198, 1)
-theme_override_fonts/font = ExtResource("1_78s5d")
-theme_override_font_sizes/font_size = 120
-text = "START
+theme_override_fonts/font = ExtResource("2_78awf")
+theme_override_font_sizes/font_size = 200
+text = "STARTING....
 "
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -154,7 +160,7 @@ offset_top = 300.0
 offset_right = 845.0
 offset_bottom = 443.0
 theme_override_colors/font_color = Color(0, 1, 0.25490198, 1)
-theme_override_fonts/font = ExtResource("1_78s5d")
+theme_override_fonts/font = ExtResource("2_78awf")
 theme_override_font_sizes/font_size = 96
 text = "DEFUSED
 "
@@ -168,7 +174,7 @@ offset_top = 320.0
 offset_right = 580.0
 offset_bottom = 343.0
 theme_override_colors/font_color = Color(0.6666667, 1, 0.6666667, 1)
-theme_override_fonts/font = ExtResource("1_78s5d")
+theme_override_fonts/font = ExtResource("2_78awf")
 theme_override_font_sizes/font_size = 26
 text = "\"\""
 horizontal_alignment = 1
@@ -181,7 +187,7 @@ offset_top = 370.0
 offset_right = 580.0
 offset_bottom = 393.0
 theme_override_colors/font_color = Color(0.53333336, 0.53333336, 0.53333336, 1)
-theme_override_fonts/font = ExtResource("1_78s5d")
+theme_override_fonts/font = ExtResource("2_78awf")
 theme_override_font_sizes/font_size = 22
 text = "\"\""
 horizontal_alignment = 1
@@ -194,7 +200,7 @@ offset_left = 390.0
 offset_top = 450.0
 offset_right = 690.0
 offset_bottom = 506.0
-theme_override_fonts/font = ExtResource("1_78s5d")
+theme_override_fonts/font = ExtResource("2_78awf")
 theme_override_font_sizes/font_size = 28
 text = "PLAY AGAIN"
 
@@ -205,7 +211,7 @@ offset_left = 390.0
 offset_top = 520.0
 offset_right = 690.0
 offset_bottom = 576.0
-theme_override_fonts/font = ExtResource("1_78s5d")
+theme_override_fonts/font = ExtResource("2_78awf")
 theme_override_font_sizes/font_size = 28
 text = "EXIT"
 
@@ -224,7 +230,7 @@ offset_top = 200.0
 offset_right = 802.0
 offset_bottom = 270.0
 theme_override_colors/font_color = Color(1, 0.13333334, 0.13333334, 1)
-theme_override_fonts/font = ExtResource("1_78s5d")
+theme_override_fonts/font = ExtResource("2_78awf")
 theme_override_font_sizes/font_size = 96
 text = "FAILED"
 horizontal_alignment = 1
@@ -237,7 +243,7 @@ offset_top = 310.0
 offset_right = 627.0
 offset_bottom = 345.0
 theme_override_colors/font_color = Color(1, 0.4, 0, 1)
-theme_override_fonts/font = ExtResource("1_78s5d")
+theme_override_fonts/font = ExtResource("2_78awf")
 theme_override_font_sizes/font_size = 48
 text = "BOOM"
 horizontal_alignment = 1
@@ -250,7 +256,7 @@ offset_left = 390.0
 offset_top = 450.0
 offset_right = 690.0
 offset_bottom = 506.0
-theme_override_fonts/font = ExtResource("1_78s5d")
+theme_override_fonts/font = ExtResource("2_78awf")
 theme_override_font_sizes/font_size = 28
 text = "PLAY AGAIN"
 
@@ -261,13 +267,14 @@ offset_left = 390.0
 offset_top = 520.0
 offset_right = 690.0
 offset_bottom = 576.0
-theme_override_fonts/font = ExtResource("1_78s5d")
+theme_override_fonts/font = ExtResource("2_78awf")
 theme_override_font_sizes/font_size = 28
 text = "EXIT"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1733418420]
 
 [node name="AudioManager" type="Node" parent="." unique_id=1581881942]
+script = ExtResource("3_s0nni")
 
 [node name="BeepPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=1049351011]
 

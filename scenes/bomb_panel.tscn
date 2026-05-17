@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://db8xnlbfj7876"]
 
+[ext_resource type="Script" uid="uid://bsbr8xgtmulj3" path="res://scripts/bomb.gd" id="1_13d3s"]
 [ext_resource type="FontFile" uid="uid://j2tyifyrgeku" path="res://assets/fonts/digital-7 (mono).ttf" id="1_b7g2j"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_13d3s"]
@@ -20,6 +21,7 @@ border_color = Color(0, 1, 0.25490198, 1)
 
 [node name="BombPanel" type="Panel" unique_id=150832375]
 theme_override_styles/panel = SubResource("StyleBoxFlat_13d3s")
+script = ExtResource("1_13d3s")
 
 [node name="BombNumLabel" type="Label" parent="." unique_id=1130812943]
 layout_mode = 0
