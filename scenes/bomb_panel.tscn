@@ -2,14 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bsbr8xgtmulj3" path="res://scripts/bomb.gd" id="1_13d3s"]
 [ext_resource type="FontFile" uid="uid://j2tyifyrgeku" path="res://assets/fonts/digital-7 (mono).ttf" id="1_b7g2j"]
+[ext_resource type="Texture2D" uid="uid://bqledoww4cpas" path="res://assets/images/c4-removebg-preview.png" id="2_nwrbl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_13d3s"]
-bg_color = Color(0.039215688, 0.039215688, 0.039215688, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 1, 0.25490198, 1)
+bg_color = Color(0, 0, 0, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7g2j"]
 bg_color = Color(0, 0, 0, 1)
@@ -20,79 +16,81 @@ border_width_bottom = 2
 border_color = Color(0, 1, 0.25490198, 1)
 
 [node name="BombPanel" type="Panel" unique_id=150832375]
+custom_minimum_size = Vector2(560, 620)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_13d3s")
 script = ExtResource("1_13d3s")
 
+[node name="BombSprite" type="TextureRect" parent="." unique_id=333001001]
+layout_mode = 0
+offset_left = -26.0
+offset_top = 126.0
+offset_right = 512.0
+offset_bottom = 627.0
+texture = ExtResource("2_nwrbl")
+expand_mode = 1
+
 [node name="BombNumLabel" type="Label" parent="." unique_id=1130812943]
 layout_mode = 0
-offset_left = 110.0
-offset_top = 18.0
-offset_right = 176.0
-offset_bottom = 49.0
+offset_left = 10.0
+offset_top = 19.0
+offset_right = 260.0
+offset_bottom = 56.0
 theme_override_colors/font_color = Color(0, 1, 0.25490198, 1)
 theme_override_fonts/font = ExtResource("1_b7g2j")
-theme_override_font_sizes/font_size = 18
-text = "BOMB 1/4
-"
+theme_override_font_sizes/font_size = 50
+text = "BOMB 1/4"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="StatusLabel" type="Label" parent="." unique_id=858580126]
 layout_mode = 0
-offset_left = 110.0
-offset_top = 44.0
-offset_right = 150.0
-offset_bottom = 67.0
+offset_left = -13.0
+offset_top = 58.0
+offset_right = 314.0
+offset_bottom = 167.0
 theme_override_colors/font_color = Color(1, 0.26666668, 0.26666668, 1)
 theme_override_fonts/font = ExtResource("1_b7g2j")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 67
 text = "ARMED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WireDecor" type="Node2D" parent="." unique_id=895095861]
-
-[node name="WireRed" type="Line2D" parent="WireDecor" unique_id=2020693507]
-width = 3.0
-default_color = Color(1, 0.13333334, 0.13333334, 1)
-
-[node name="WireBlue" type="Line2D" parent="WireDecor" unique_id=1141982415]
-width = 3.0
-default_color = Color(0.13333334, 0.4, 1, 1)
-
-[node name="WireYellow" type="Line2D" parent="WireDecor" unique_id=561663527]
-width = 3.0
-default_color = Color(1, 0.8, 0, 1)
-
 [node name="DisplayScreen" type="Panel" parent="." unique_id=507968854]
 layout_mode = 0
-offset_left = 15.0
-offset_top = 155.0
-offset_right = 205.0
-offset_bottom = 245.0
+offset_left = 176.0
+offset_top = 227.0
+offset_right = 364.0
+offset_bottom = 270.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_b7g2j")
 
-[node name="CodeInput" type="LineEdit" parent="DisplayScreen" unique_id=664170030]
+[node name="Numpad" type="GridContainer" parent="." unique_id=222333444]
 layout_mode = 0
-offset_left = 10.0
-offset_top = 18.0
-offset_right = 180.0
-offset_bottom = 70.0
+offset_left = 60.0
+offset_top = 388.0
+offset_right = 318.0
+offset_bottom = 590.0
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+columns = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1917262788]
+
+[node name="CodeInput" type="LineEdit" parent="." unique_id=664170030]
+layout_mode = 0
+offset_left = 181.0
+offset_top = 230.0
+offset_right = 364.0
+offset_bottom = 270.0
 theme_override_colors/font_color = Color(0, 1, 0.25490198, 1)
 theme_override_fonts/font = ExtResource("1_b7g2j")
 theme_override_font_sizes/font_size = 32
 max_length = 6
 editable = false
-
-[node name="CursorBlank" type="Label" parent="DisplayScreen" unique_id=492617534]
-visible = false
-layout_mode = 0
-offset_left = 155.0
-offset_top = 18.0
-offset_right = 195.0
-offset_bottom = 42.0
-theme_override_colors/font_color = Color(0, 1, 0.25490198, 1)
-theme_override_fonts/font = ExtResource("1_b7g2j")
-theme_override_font_sizes/font_size = 32
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1917262788]

@@ -30,10 +30,10 @@ vertical_alignment = 1
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1137142459]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 0
-offset_left = 369.0
-offset_top = 320.0
-offset_right = 788.0
-offset_bottom = 520.0
+offset_left = 354.0
+offset_top = 350.0
+offset_right = 783.0
+offset_bottom = 559.0
 theme_override_constants/separation = 16
 alignment = 1
 
@@ -125,3 +125,14 @@ offset_right = 1080.0
 offset_bottom = 65.0
 theme_override_font_sizes/font_size = 22
 text = "ⓘ"
+
+[node name="Label2" type="Label" parent="." unique_id=2016057713]
+layout_mode = 0
+offset_left = 362.0
+offset_top = 280.0
+offset_right = 822.0
+offset_bottom = 416.0
+theme_override_colors/font_color = Color(0, 1, 0.25490198, 1)
+theme_override_fonts/font = ExtResource("2_2wh52")
+theme_override_font_sizes/font_size = 47
+text = "A BOMB DEFUSAL GAME"
