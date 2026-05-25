@@ -4,7 +4,7 @@ const MEMORIZE_TIME = 14.0
 const DEFUSE_TIME = 22.0
 const NUM_CODES = 5
 const NUM_BOMBS = 4
-const DIGITS = "0123456789"
+const DIGITS = "0123"
 
 @onready var code_labels = [$CodeDisplay/Code1, $CodeDisplay/Code2,
 							$CodeDisplay/Code3, $CodeDisplay/Code4, $CodeDisplay/Code5]
@@ -99,6 +99,7 @@ func _start_memorize_phase() -> void:
 	phase_label.add_theme_font_size_override("font_size", 130)
 	phase_label.add_theme_color_override("font_color", Color(0, 1, 0.25, 1))
 	phase_label.text = "MEMORIZE"
+	phase_label.show()
 
 	timer_display.set_position(Vector2(950, 10))
 	timer_display.set_size(Vector2(180, 60))
@@ -119,6 +120,7 @@ func _start_defuse_phase() -> void:
 	phase_label.add_theme_font_size_override("font_size", 87)
 	phase_label.add_theme_color_override("font_color", Color(0, 1, 0.25, 1))
 	phase_label.text = "DEFUSE"
+	phase_label.show()
 
 	timer_display.set_position(Vector2(890, 8))
 	timer_display.set_size(Vector2(220, 60))
@@ -143,6 +145,9 @@ func _start_defuse_phase() -> void:
 
 func on_bomb_defused(bomb_index: int) -> void:
 	defused_count += 1
+	if defused_count >= NUM_BOMBS:
+		time_when_won = def_timer.time_left
+		def_timer.stop()
 	await get_tree().create_timer(0.3).timeout
 
 	if defused_count >= NUM_BOMBS:
@@ -156,10 +161,10 @@ func on_bomb_defused(bomb_index: int) -> void:
 		bombs[nxt].set_locked(false)
 
 func _on_win() -> void:
-	time_when_won = def_timer.time_left
-	def_timer.stop()
+	def_timer.stop()  
 	bomb_container.hide()
 	timer_display.hide()
+	phase_label.hide()
 	audio.play_defuse()
 
 	var cfg = ConfigFile.new()
@@ -173,6 +178,7 @@ func _on_fail() -> void:
 	def_timer.stop()
 	bomb_container.hide()
 	timer_display.hide()
+	phase_label.hide()
 	audio.play_explosion()
 	fail_screen.show()
 

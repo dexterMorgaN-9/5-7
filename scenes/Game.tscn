@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b7e1jl0aonk6n" path="res://scripts/GameController.gd" id="1_cpr0p"]
 [ext_resource type="FontFile" uid="uid://j2tyifyrgeku" path="res://assets/fonts/digital-7 (mono).ttf" id="2_78awf"]
 [ext_resource type="PackedScene" uid="uid://db8xnlbfj7876" path="res://scenes/bomb_panel.tscn" id="3_78awf"]
-[ext_resource type="Script" uid="uid://vmt7c72u1lyy" path="res://scenes/audio_manager.gd" id="3_s0nni"]
+[ext_resource type="Script" uid="uid://vmt7c72u1lyy" path="res://scripts/audio_manager.gd" id="3_s0nni"]
 
 [node name="GameRoot" type="Node2D" unique_id=439273158]
 script = ExtResource("1_cpr0p")
@@ -13,10 +13,10 @@ z_index = -1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -47.0
-offset_top = -28.0
-offset_right = 1210.0
-offset_bottom = 643.0
+offset_left = -40.0
+offset_top = -16.0
+offset_right = 1217.0
+offset_bottom = 655.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
@@ -51,7 +51,7 @@ wait_time = 10.0
 one_shot = true
 
 [node name="DefuseTimer" type="Timer" parent="." unique_id=647823251]
-wait_time = 22.0
+wait_time = 30.0
 one_shot = true
 
 [node name="CodeDisplay" type="VBoxContainer" parent="." unique_id=344075213]
@@ -168,26 +168,26 @@ grow_vertical = 2
 
 [node name="FailLabel" type="Label" parent="FailScreen" unique_id=2040381583]
 layout_mode = 0
-offset_left = 540.0
+offset_left = 272.0
 offset_top = 200.0
-offset_right = 802.0
-offset_bottom = 270.0
+offset_right = 901.0
+offset_bottom = 480.0
 theme_override_colors/font_color = Color(1, 0.13333334, 0.13333334, 1)
 theme_override_fonts/font = ExtResource("2_78awf")
-theme_override_font_sizes/font_size = 96
+theme_override_font_sizes/font_size = 120
 text = "FAILED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BoomLabel" type="Label" parent="FailScreen" unique_id=1537588655]
 layout_mode = 0
-offset_left = 540.0
-offset_top = 310.0
-offset_right = 627.0
-offset_bottom = 345.0
+offset_left = 272.0
+offset_top = -24.0
+offset_right = 852.0
+offset_bottom = 296.0
 theme_override_colors/font_color = Color(1, 0.4, 0, 1)
 theme_override_fonts/font = ExtResource("2_78awf")
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 222
 text = "BOOM"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -195,10 +195,10 @@ vertical_alignment = 1
 [node name="PlayAgainBtn" type="Button" parent="FailScreen" unique_id=751080704]
 custom_minimum_size = Vector2(300, 56)
 layout_mode = 0
-offset_left = 390.0
-offset_top = 450.0
-offset_right = 690.0
-offset_bottom = 506.0
+offset_left = 432.0
+offset_top = 456.0
+offset_right = 732.0
+offset_bottom = 512.0
 theme_override_fonts/font = ExtResource("2_78awf")
 theme_override_font_sizes/font_size = 28
 text = "PLAY AGAIN"
@@ -206,9 +206,9 @@ text = "PLAY AGAIN"
 [node name="ExitBtn" type="Button" parent="FailScreen" unique_id=448866381]
 custom_minimum_size = Vector2(300, 56)
 layout_mode = 0
-offset_left = 390.0
+offset_left = 432.0
 offset_top = 520.0
-offset_right = 690.0
+offset_right = 732.0
 offset_bottom = 576.0
 theme_override_fonts/font = ExtResource("2_78awf")
 theme_override_font_sizes/font_size = 28
@@ -224,13 +224,13 @@ grow_vertical = 2
 
 [node name="DefusedLabel" type="Label" parent="WinScreen" unique_id=963571622]
 layout_mode = 0
-offset_left = 540.0
-offset_top = 300.0
-offset_right = 845.0
-offset_bottom = 443.0
+offset_left = 224.0
+offset_top = 64.0
+offset_right = 924.0
+offset_bottom = 387.0
 theme_override_colors/font_color = Color(0, 1, 0.25490198, 1)
 theme_override_fonts/font = ExtResource("2_78awf")
-theme_override_font_sizes/font_size = 96
+theme_override_font_sizes/font_size = 220
 text = "DEFUSED
 "
 horizontal_alignment = 1
@@ -238,26 +238,26 @@ vertical_alignment = 1
 
 [node name="PlayerLabel" type="Label" parent="WinScreen" unique_id=1704382801]
 layout_mode = 0
-offset_left = 540.0
-offset_top = 320.0
-offset_right = 580.0
-offset_bottom = 343.0
+offset_left = 272.0
+offset_top = 272.0
+offset_right = 760.0
+offset_bottom = 321.0
 theme_override_colors/font_color = Color(0.6666667, 1, 0.6666667, 1)
 theme_override_fonts/font = ExtResource("2_78awf")
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 67
 text = "\"\""
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TimeLabel" type="Label" parent="WinScreen" unique_id=1929033636]
 layout_mode = 0
-offset_left = 540.0
-offset_top = 370.0
-offset_right = 580.0
-offset_bottom = 393.0
+offset_left = 440.0
+offset_top = 360.0
+offset_right = 492.0
+offset_bottom = 402.0
 theme_override_colors/font_color = Color(0.53333336, 0.53333336, 0.53333336, 1)
 theme_override_fonts/font = ExtResource("2_78awf")
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 57
 text = "\"\""
 horizontal_alignment = 1
 vertical_alignment = 1
