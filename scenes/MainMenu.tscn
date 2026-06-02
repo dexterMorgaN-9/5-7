@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://if58xdhyve3j" path="res://scripts/MenuController.gd" id="1_0ykhv"]
 [ext_resource type="FontFile" uid="uid://j2tyifyrgeku" path="res://assets/fonts/digital-7 (mono).ttf" id="2_2wh52"]
 [ext_resource type="Script" uid="uid://vmt7c72u1lyy" path="res://scripts/audio_manager.gd" id="3_audio"]
+[ext_resource type="AudioStream" uid="uid://cs1dgbmnp0xgw" path="res://assets/bgm/bgm.mp3" id="4_ow34m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ykhv"]
 bg_color = Color(0, 0, 0, 1)
@@ -152,15 +153,20 @@ theme_override_fonts/font = ExtResource("2_2wh52")
 theme_override_font_sizes/font_size = 47
 text = "A BOMB DEFUSAL GAME"
 
-[node name="AudioManager" type="Node" parent="." unique_id=9001000001]
+[node name="AudioManager" type="Node" parent="." unique_id=411065409]
 script = ExtResource("3_audio")
 
-[node name="BeepPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=9001000002]
+[node name="BeepPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=411065410]
 
-[node name="MenuBGMPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=9001000003]
+[node name="ClickPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=411065415]
 
-[node name="DefuseBGMPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=9001000004]
+[node name="MenuBGMPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=411065411]
+stream = ExtResource("4_ow34m")
+volume_db = -21.667
+autoplay = true
 
-[node name="WinBGMPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=9001000005]
+[node name="DefuseBGMPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=411065412]
 
-[node name="FailBGMPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=9001000006]
+[node name="WinBGMPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=411065413]
+
+[node name="FailBGMPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=411065414]

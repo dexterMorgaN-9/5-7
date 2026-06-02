@@ -242,6 +242,7 @@ offset_bottom = 321.0
 theme_override_colors/font_color = Color(0.6666667, 1, 0.6666667, 1)
 theme_override_fonts/font = ExtResource("2_78awf")
 theme_override_font_sizes/font_size = 67
+text = ""
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -254,6 +255,7 @@ offset_bottom = 402.0
 theme_override_colors/font_color = Color(0.53333336, 0.53333336, 0.53333336, 1)
 theme_override_fonts/font = ExtResource("2_78awf")
 theme_override_font_sizes/font_size = 57
+text = ""
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -285,6 +287,8 @@ text = "EXIT"
 script = ExtResource("3_s0nni")
 
 [node name="BeepPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=1049351011]
+
+[node name="ClickPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=1049351016]
 
 [node name="MenuBGMPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=1049351012]
 
