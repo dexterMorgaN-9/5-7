@@ -3,7 +3,11 @@
 [ext_resource type="Script" uid="uid://if58xdhyve3j" path="res://scripts/MenuController.gd" id="1_0ykhv"]
 [ext_resource type="FontFile" uid="uid://j2tyifyrgeku" path="res://assets/fonts/digital-7 (mono).ttf" id="2_2wh52"]
 [ext_resource type="Script" uid="uid://vmt7c72u1lyy" path="res://scripts/audio_manager.gd" id="3_audio"]
-[ext_resource type="AudioStream" uid="uid://cs1dgbmnp0xgw" path="res://assets/bgm/bgm.mp3" id="4_ow34m"]
+[ext_resource type="AudioStream" uid="uid://bypek3vifycyv" path="res://assets/sfx/beep.ogg" id="4_mipys"]
+[ext_resource type="AudioStream" uid="uid://kintlb7vp1dp" path="res://assets/sfx/click.ogg" id="5_8a8k8"]
+[ext_resource type="AudioStream" uid="uid://nku7yoch175l" path="res://assets/bgm/menu_bgm.ogg" id="6_7la6k"]
+[ext_resource type="AudioStream" uid="uid://cjhceqxmvwkps" path="res://assets/bgm/defuse_bgm.ogg" id="7_2nypq"]
+[ext_resource type="AudioStream" uid="uid://c6en37dmhhnxb" path="res://assets/bgm/win_bgm.ogg" id="8_bky6r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ykhv"]
 bg_color = Color(0, 0, 0, 1)
@@ -157,16 +161,22 @@ text = "A BOMB DEFUSAL GAME"
 script = ExtResource("3_audio")
 
 [node name="BeepPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=411065410]
+stream = ExtResource("4_mipys")
 
 [node name="ClickPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=411065415]
+stream = ExtResource("5_8a8k8")
 
 [node name="MenuBGMPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=411065411]
-stream = ExtResource("4_ow34m")
+stream = ExtResource("6_7la6k")
 volume_db = -21.667
 autoplay = true
 
 [node name="DefuseBGMPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=411065412]
+stream = ExtResource("7_2nypq")
+autoplay = true
+parameters/looping = true
 
 [node name="WinBGMPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=411065413]
+stream = ExtResource("8_bky6r")
 
 [node name="FailBGMPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=411065414]

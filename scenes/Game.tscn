@@ -4,6 +4,11 @@
 [ext_resource type="FontFile" uid="uid://j2tyifyrgeku" path="res://assets/fonts/digital-7 (mono).ttf" id="2_78awf"]
 [ext_resource type="PackedScene" uid="uid://db8xnlbfj7876" path="res://scenes/bomb_panel.tscn" id="3_78awf"]
 [ext_resource type="Script" uid="uid://vmt7c72u1lyy" path="res://scripts/audio_manager.gd" id="3_s0nni"]
+[ext_resource type="AudioStream" uid="uid://bypek3vifycyv" path="res://assets/sfx/beep.ogg" id="5_g4kob"]
+[ext_resource type="AudioStream" uid="uid://kintlb7vp1dp" path="res://assets/sfx/click.ogg" id="6_qy1jj"]
+[ext_resource type="AudioStream" uid="uid://nku7yoch175l" path="res://assets/bgm/menu_bgm.ogg" id="7_3xj3m"]
+[ext_resource type="AudioStream" uid="uid://cjhceqxmvwkps" path="res://assets/bgm/defuse_bgm.ogg" id="8_mcffj"]
+[ext_resource type="AudioStream" uid="uid://c6en37dmhhnxb" path="res://assets/bgm/win_bgm.ogg" id="9_2rd6h"]
 
 [node name="GameRoot" type="Node2D" unique_id=439273158]
 script = ExtResource("1_cpr0p")
@@ -242,7 +247,6 @@ offset_bottom = 321.0
 theme_override_colors/font_color = Color(0.6666667, 1, 0.6666667, 1)
 theme_override_fonts/font = ExtResource("2_78awf")
 theme_override_font_sizes/font_size = 67
-text = ""
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -255,7 +259,6 @@ offset_bottom = 402.0
 theme_override_colors/font_color = Color(0.53333336, 0.53333336, 0.53333336, 1)
 theme_override_fonts/font = ExtResource("2_78awf")
 theme_override_font_sizes/font_size = 57
-text = ""
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -287,13 +290,20 @@ text = "EXIT"
 script = ExtResource("3_s0nni")
 
 [node name="BeepPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=1049351011]
+stream = ExtResource("5_g4kob")
 
 [node name="ClickPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=1049351016]
+stream = ExtResource("6_qy1jj")
 
 [node name="MenuBGMPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=1049351012]
+stream = ExtResource("7_3xj3m")
 
 [node name="DefuseBGMPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=1049351013]
+stream = ExtResource("8_mcffj")
+autoplay = true
+parameters/looping = true
 
 [node name="WinBGMPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=1049351014]
+stream = ExtResource("9_2rd6h")
 
 [node name="FailBGMPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=1049351015]
