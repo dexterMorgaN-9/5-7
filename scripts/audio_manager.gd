@@ -1,22 +1,39 @@
 extends Node
 
-@onready var beep_player    = $BeepPlayer
-@onready var defuse_player  = $DefusePlayer
-@onready var explode_player = $ExplosionPlayer
-@onready var bgm_player    = $BGMPlayer
+@onready var beep_player  = $BeepPlayer
+@onready var click_player = $ClickPlayer
+@onready var menu_bgm     = $MenuBGMPlayer
+@onready var defuse_bgm   = $DefuseBGMPlayer
+@onready var win_bgm      = $WinBGMPlayer
+@onready var fail_bgm     = $FailBGMPlayer
+
+var _prev_bgm = null
+
+func _stop_bgm() -> void:
+	menu_bgm.stop()
+	defuse_bgm.stop()
+	win_bgm.stop()
+	fail_bgm.stop()
 
 func play_beep() -> void:
 	beep_player.stop()
 	beep_player.play()
 
-func play_defuse() -> void:
-	bgm_player.stop()
-	defuse_player.play()
+func play_click() -> void:
+	click_player.stop()
+	click_player.play()
 
-func play_explosion() -> void:
-	bgm_player.stop()
-	explode_player.play()
+func play_menu_bgm() -> void:
+	_stop_bgm()
+	menu_bgm.play()
 
-func play_bgm() -> void:
-	if !bgm_player.playing:
-		bgm_player.play()
+func play_defuse_bgm() -> void:
+	_stop_bgm()
+	defuse_bgm.play()
+func play_win_bgm() -> void:
+	_stop_bgm()
+	win_bgm.play()
+
+func play_fail_bgm() -> void:
+	_stop_bgm()
+	fail_bgm.play()

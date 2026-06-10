@@ -5,31 +5,16 @@ var bidx: int = 0
 var game: Node = null
 var locked: bool = true
 var defused: bool = false
-var input_so_far: String = ""
+var inp: String = ""
+var _last_key = null
 
 @onready var codeinput = $CodeInput
 @onready var statuslbl = $StatusLabel
-@onready var numlbl = $BombNumLabel
-@onready var anim = $AnimationPlayer
-@onready var numpad = $Numpad
+@onready var numlbl    = $BombNumLabel
+@onready var anim      = $AnimationPlayer
+@onready var numpad    = $Numpad
 
 var _keys = ["1","2","3","4","5","6","7","8","9","*","0","#"]
-
-func _ready() -> void:
-	var transparent = StyleBoxFlat.new()
-	transparent.bg_color = Color(0, 0, 0, 0)
-	add_theme_stylebox_override("panel", transparent)
-
-func setup(code: String, idx: int, gnode: Node) -> void:
-	correct = code
-	bidx = idx
-	game = gnode
-	input_so_far = ""
-	numlbl.text = "BOMB %d/4" % (idx + 1)
-	statuslbl.text = "ARMED"
-	statuslbl.add_theme_color_override("font_color", Color(1, 0.26, 0.26, 1))
-	codeinput.text = ""
-	_build_numpad()
 
 func _mk_sbox(bg: Color, bw: int, bcol := Color(0,0,0,0), cr := 0) -> StyleBoxFlat:
 	var s = StyleBoxFlat.new()
@@ -46,22 +31,39 @@ func _build_numpad() -> void:
 	for child in numpad.get_children():
 		child.queue_free()
 
-	var s_norm = _mk_sbox(Color(0,0,0,0), 0)
+	var s_norm  = _mk_sbox(Color(0,0,0,0), 0)
 	var s_hover = _mk_sbox(Color(0, 1, 0.2, 0.18), 1, Color(0, 1, 0.25, 0.55), 3)
 	var s_press = _mk_sbox(Color(0, 1, 0.35, 0.50), 1, Color(0, 1, 0.254, 1), 3)
 
 	for k in _keys:
 		var btn = Button.new()
-		btn.text = ""
+		btn.text = k
 		btn.custom_minimum_size = Vector2(25, 18)
 		btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
-		btn.add_theme_stylebox_override("normal", s_norm)
-		btn.add_theme_stylebox_override("hover", s_hover)
-		btn.add_theme_stylebox_override("pressed", s_press)
+		btn.add_theme_stylebox_override("normal",   s_norm)
+		btn.add_theme_stylebox_override('hover',    s_hover)
+		btn.add_theme_stylebox_override("pressed",  s_press)
 		btn.add_theme_stylebox_override("disabled", s_norm)
-		btn.add_theme_stylebox_override("focus", s_norm)
+		btn.add_theme_stylebox_override('focus',    s_norm)
 		btn.pressed.connect(_on_key.bind(k))
 		numpad.add_child(btn)
+
+func _ready() -> void:
+	var transparent = StyleBoxFlat.new()
+	transparent.bg_color = Color(0, 0, 0, 0)
+	add_theme_stylebox_override("panel", transparent)
+	$BombNumLabel.hide()
+
+func setup(code: String, idx: int, gnode: Node) -> void:
+	correct = code
+	bidx    = idx
+	game    = gnode
+	inp = ""
+	numlbl.text  = "BOMB %d/4" % (idx + 1)
+	statuslbl.text = "ARMED"
+	statuslbl.add_theme_color_override("font_color", Color(1, 0.26, 0.26, 1))
+	codeinput.text = ""
+	_build_numpad()
 
 func set_locked(val: bool) -> void:
 	locked = val
@@ -94,34 +96,33 @@ func _input(event: InputEvent) -> void:
 		_on_key("#")
 	get_viewport().set_input_as_handled()
 
-func _on_key(k: String) -> void:
-	if locked or defused: return
-
-	game.audio.play_click()
-
-	match k:
-		"*":
-			if input_so_far.length() > 0:
-				input_so_far = input_so_far.left(input_so_far.length() - 1)
-				codeinput.text = input_so_far
-		"#":
-			_check()
-		_:
-			if input_so_far.length() < 6:
-				input_so_far += k
-				codeinput.text = input_so_far
-				if input_so_far.length() == 6:
-					_check()
-
 func _check() -> void:
-	if input_so_far == correct:
+	if inp == correct:
 		_defuse()
 	else:
 		_wrong()
 
+func _on_key(k: String) -> void:
+	if locked or defused: return
+	game.audio.play_click()
+
+	match k:
+		"*":
+			if inp.length() > 0:
+				inp = inp.left(inp.length() - 1)
+				codeinput.text = inp
+		"#":
+			_check()
+		_:
+			if inp.length() < 6:
+				inp += k
+				codeinput.text = inp
+				if inp.length() == 6:
+					_check()
+
 func _defuse() -> void:
 	defused = true
-	locked = true
+	locked  = true
 	numpad.modulate.a = 0.0
 	numpad.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	codeinput.text = correct
@@ -131,7 +132,7 @@ func _defuse() -> void:
 	game.on_bomb_defused(bidx)
 
 func _wrong() -> void:
-	input_so_far = ""
+	inp = ""
 	codeinput.text = ""
 	statuslbl.text = "WRONG — RETRY"
 	statuslbl.add_theme_color_override("font_color", Color(1, 0.3, 0.1, 1))

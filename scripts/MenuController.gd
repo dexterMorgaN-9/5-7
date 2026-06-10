@@ -3,12 +3,13 @@ extends Control
 @onready var settings_panel = $SettingsPanel
 @onready var nameinput = $SettingsPanel/NameInput
 @onready var volslider = $SettingsPanel/VolumeSlider
+@onready var audio     = $AudioManager
 
 const SAVE_PATH = "user://settings.cfg"
-const GH_URL = "https://github.com/dexterMorgaN-9/5-7/blob/main/README.md"
+const GH_URL    = "https://github.com/dexterMorgaN-9/5-7/blob/main/README.md"
 
 var volbus = "Master"
-
+var _cfg_loaded = false
 
 func _apply_styles() -> void:
 	var style = StyleBoxFlat.new()
@@ -30,6 +31,7 @@ func _apply_styles() -> void:
 	bh.border_color = Color(0, 1, 0.25, 0.5)
 	bh.corner_radius_top_left = 4; bh.corner_radius_top_right = 4
 	bh.corner_radius_bottom_left = 4; bh.corner_radius_bottom_right = 4
+
 	var bp = StyleBoxFlat.new()
 	bp.bg_color = Color(0, 1, 0.25, 0.3)
 	bp.border_width_left = 1; bp.border_width_right = 1
@@ -39,12 +41,12 @@ func _apply_styles() -> void:
 	bp.corner_radius_bottom_left = 4; bp.corner_radius_bottom_right = 4
 
 	var bb = $SettingsPanel/BackButton
-	bb.add_theme_stylebox_override("normal", bn)
-	bb.add_theme_stylebox_override("hover", bh)
+	bb.add_theme_stylebox_override("normal",  bn)
+	bb.add_theme_stylebox_override("hover",   bh)
 	bb.add_theme_stylebox_override("pressed", bp)
-	bb.add_theme_stylebox_override("focus", bn)
-	bb.add_theme_color_override("font_color", Color(0, 1, 0.25, 1))
-	bb.add_theme_color_override("font_hover_color", Color(0, 1, 0.25, 1))
+	bb.add_theme_stylebox_override("focus",   bn)
+	bb.add_theme_color_override("font_color",       Color(0, 1, 0.25, 1))
+	bb.add_theme_color_override("font_hover_color",  Color(0, 1, 0.25, 1))
 
 func _load_settings() -> void:
 	var cfg = ConfigFile.new()
@@ -53,6 +55,7 @@ func _load_settings() -> void:
 		var vol = cfg.get_value("audio", "volume", 0.8)
 		volslider.value = vol
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(volbus), linear_to_db(vol))
+		_cfg_loaded = true
 	else:
 		nameinput.text = "Rookie"
 		volslider.value = 0.8
@@ -75,6 +78,7 @@ func _ready() -> void:
 	$InfoButton.pressed.connect(_on_info)
 	$SettingsPanel/VolumeSlider.value_changed.connect(_on_vol_changed)
 	$SettingsPanel/BackButton.pressed.connect(_on_back)
+	audio.play_menu_bgm()
 
 func _on_play() -> void:
 	_save_settings()
@@ -94,5 +98,6 @@ func _on_back() -> void:
 
 func _on_info() -> void:
 	OS.shell_open(GH_URL)
+
 func _on_vol_changed(val: float) -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(volbus), linear_to_db(val))
