@@ -25,23 +25,11 @@ shader_parameter/scan_brightness = 0.12
 [node name="GameRoot" type="Node2D" unique_id=439273158]
 script = ExtResource("1_cpr0p")
 
-[node name="PhaseLabel" type="Label" parent="." unique_id=606157185]
-offset_left = 206.0
-offset_top = -8.0
-offset_right = 889.0
-offset_bottom = 193.0
-theme_override_colors/font_color = Color(0, 1, 0.25490198, 1)
-theme_override_fonts/font = ExtResource("2_78awf")
-theme_override_font_sizes/font_size = 167
-text = "MEMORIZE"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="TimerDisplay" type="Label" parent="." unique_id=1549602358]
-offset_left = -22.0
-offset_top = 173.0
-offset_right = 1057.0
-offset_bottom = 454.0
+offset_left = 143.0
+offset_top = 96.0
+offset_right = 984.0
+offset_bottom = 286.0
 theme_override_colors/font_color = Color(0, 1, 0.25490198, 1)
 theme_override_fonts/font = ExtResource("2_78awf")
 theme_override_font_sizes/font_size = 190
@@ -149,14 +137,14 @@ grow_vertical = 2
 
 [node name="StartLabel" type="Label" parent="StartPopup" unique_id=1677720050]
 layout_mode = 0
-offset_left = 14.0
-offset_top = 345.0
-offset_right = 1105.0
-offset_bottom = 652.0
+offset_left = -7.0
+offset_top = 244.0
+offset_right = 1084.0
+offset_bottom = 551.0
 theme_override_colors/font_color = Color(0, 1, 0.25490198, 1)
 theme_override_fonts/font = ExtResource("2_78awf")
 theme_override_font_sizes/font_size = 200
-text = "STARTING...."
+text = "STARTING"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -314,10 +302,10 @@ custom_minimum_size = Vector2(100, 100)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -14.0
-offset_top = -17.0
-offset_right = 1115.0
-offset_bottom = 623.0
+offset_left = -16.0
+offset_top = -22.0
+offset_right = 1113.0
+offset_bottom = 618.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2

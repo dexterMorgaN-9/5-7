@@ -16,7 +16,9 @@ var input_so_far: String = ""
 var _keys = ["1","2","3","4","5","6","7","8","9","*","0","#"]
 
 func _ready() -> void:
-	pass
+	var transparent = StyleBoxFlat.new()
+	transparent.bg_color = Color(0, 0, 0, 0)
+	add_theme_stylebox_override("panel", transparent)
 
 func setup(code: String, idx: int, gnode: Node) -> void:
 	correct = code
@@ -94,6 +96,9 @@ func _input(event: InputEvent) -> void:
 
 func _on_key(k: String) -> void:
 	if locked or defused: return
+
+	game.audio.play_click()
+
 	match k:
 		"*":
 			if input_so_far.length() > 0:
@@ -120,7 +125,7 @@ func _defuse() -> void:
 	numpad.modulate.a = 0.0
 	numpad.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	codeinput.text = correct
-	statuslbl.text = "✓ DEFUSED"
+	statuslbl.text = " DEFUSED"
 	statuslbl.add_theme_color_override("font_color", Color(0, 1, 0.25, 1))
 	anim.play("defuse_flash")
 	game.on_bomb_defused(bidx)
