@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bsbr8xgtmulj3" path="res://scripts/bomb.gd" id="1_13d3s"]
 [ext_resource type="FontFile" uid="uid://j2tyifyrgeku" path="res://assets/fonts/digital-7 (mono).ttf" id="1_b7g2j"]
 [ext_resource type="Texture2D" uid="uid://bqledoww4cpas" path="res://assets/images/c4-removebg-preview.png" id="2_nwrbl"]
+[ext_resource type="Shader" uid="uid://0byqru2m2mra" path="res://assets/shaders/Game.gdshader" id="4_mk3mr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_13d3s"]
 bg_color = Color(0, 0, 0, 0)
@@ -14,6 +15,17 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 1, 0.25490198, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cax33"]
+shader = ExtResource("4_mk3mr")
+shader_parameter/speed = 0.06
+shader_parameter/grid_size = 55.0
+shader_parameter/line_thickness = 0.025
+shader_parameter/perspective = 1.4
+shader_parameter/line_color = Color(0, 0.003921569, 0, 0.3019608)
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/scan_speed = 0.18
+shader_parameter/scan_brightness = 0.12
 
 [node name="BombPanel" type="Panel" unique_id=150832375]
 custom_minimum_size = Vector2(560, 620)
@@ -96,3 +108,26 @@ theme_override_fonts/font = ExtResource("1_b7g2j")
 theme_override_font_sizes/font_size = 32
 max_length = 6
 editable = false
+
+[node name="BGLayer" type="ColorRect" parent="." unique_id=1496998777]
+z_index = -2
+material = SubResource("ShaderMaterial_cax33")
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -35.0
+offset_right = 1027.0
+offset_bottom = 561.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BGOverlay" type="ColorRect" parent="." unique_id=1155118500]
+z_index = -1
+layout_mode = 0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

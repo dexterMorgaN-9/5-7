@@ -8,21 +8,27 @@
 [ext_resource type="AudioStream" uid="uid://nku7yoch175l" path="res://assets/bgm/menu_bgm.ogg" id="6_7la6k"]
 [ext_resource type="AudioStream" uid="uid://cjhceqxmvwkps" path="res://assets/bgm/defuse_bgm.ogg" id="7_2nypq"]
 [ext_resource type="AudioStream" uid="uid://c6en37dmhhnxb" path="res://assets/bgm/win_bgm.ogg" id="8_bky6r"]
+[ext_resource type="Shader" uid="uid://0byqru2m2mra" path="res://assets/shaders/Game.gdshader" id="9_8a8k8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ykhv"]
 bg_color = Color(0, 0, 0, 1)
 border_color = Color(0, 0, 0, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7la6k"]
+shader = ExtResource("9_8a8k8")
+shader_parameter/speed = 0.06
+shader_parameter/grid_size = 55.0
+shader_parameter/line_thickness = 0.025
+shader_parameter/perspective = 1.4
+shader_parameter/line_color = Color(0, 0.003921569, 0, 0.3019608)
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/scan_speed = 0.18
+shader_parameter/scan_brightness = 0.12
+
 [node name="Control" type="Control" unique_id=351372045]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_0ykhv")
-
-[node name="Background" type="ColorRect" parent="." unique_id=1574688420]
-layout_mode = 0
-offset_right = 1130.0
-offset_bottom = 643.0
-color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="." unique_id=37392992]
 layout_mode = 0
@@ -180,3 +186,26 @@ parameters/looping = true
 stream = ExtResource("8_bky6r")
 
 [node name="FailBGMPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=411065414]
+
+[node name="BGOverlay" type="ColorRect" parent="." unique_id=1485350655]
+z_index = -1
+layout_mode = 0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BGLayer" type="ColorRect" parent="." unique_id=1369894459]
+z_index = -2
+material = SubResource("ShaderMaterial_7la6k")
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -87.0
+offset_top = -88.0
+offset_right = 1186.0
+offset_bottom = 683.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
