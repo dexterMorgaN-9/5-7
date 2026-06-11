@@ -9,7 +9,28 @@ const SAVE_PATH = "user://settings.cfg"
 const GH_URL    = "https://github.com/dexterMorgaN-9/5-7/blob/main/README.md"
 
 var volbus = "Master"
-var _cfg_loaded = false
+var cfg_loaded = false
+
+
+func _load_settings() -> void:
+	var cfg = ConfigFile.new()
+	if cfg.load(SAVE_PATH) == OK:
+		nameinput.text = cfg.get_value("player", "name", "Rookie")
+		var vol = cfg.get_value("audio", "volume", 0.8)
+		volslider.value = vol
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(volbus), linear_to_db(vol))
+		cfg_loaded = true
+	else:
+		nameinput.text = "Rookie"
+		volslider.value = 0.8
+
+func _save_settings() -> void:
+	var cfg = ConfigFile.new()
+	var pname = nameinput.text.strip_edges()
+	if pname.is_empty(): pname = "Rookie"
+	cfg.set_value("player", "name", pname)
+	cfg.set_value("audio", "volume", volslider.value)
+	cfg.save(SAVE_PATH)
 
 func _apply_styles() -> void:
 	var style = StyleBoxFlat.new()
@@ -56,26 +77,6 @@ func _apply_styles() -> void:
 		btn.add_theme_color_override("font_color",       Color(0, 1, 0.25, 1))
 		btn.add_theme_color_override("font_hover_color", Color(0, 1, 0.25, 1))
 
-func _load_settings() -> void:
-	var cfg = ConfigFile.new()
-	if cfg.load(SAVE_PATH) == OK:
-		nameinput.text = cfg.get_value("player", "name", "Rookie")
-		var vol = cfg.get_value("audio", "volume", 0.8)
-		volslider.value = vol
-		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(volbus), linear_to_db(vol))
-		_cfg_loaded = true
-	else:
-		nameinput.text = "Rookie"
-		volslider.value = 0.8
-
-func _save_settings() -> void:
-	var cfg = ConfigFile.new()
-	var pname = nameinput.text.strip_edges()
-	if pname.is_empty(): pname = "Rookie"
-	cfg.set_value("player", "name", pname)
-	cfg.set_value("audio", "volume", volslider.value)
-	cfg.save(SAVE_PATH)
-
 func _ready() -> void:
 	settings_panel.hide()
 	_load_settings()
@@ -91,7 +92,6 @@ func _ready() -> void:
 func _on_play() -> void:
 	_save_settings()
 	get_tree().change_scene_to_file("res://scenes/Game.tscn")
-
 func _on_quit() -> void:
 	get_tree().quit()
 

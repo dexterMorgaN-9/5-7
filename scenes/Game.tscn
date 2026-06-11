@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://cjhceqxmvwkps" path="res://assets/bgm/defuse_bgm.ogg" id="8_mcffj"]
 [ext_resource type="AudioStream" uid="uid://c6en37dmhhnxb" path="res://assets/bgm/win_bgm.ogg" id="9_2rd6h"]
 [ext_resource type="AudioStream" uid="uid://cja05f6qcf5hk" path="res://assets/bgm/memorize_bgm.ogg" id="10_3xj3m"]
+[ext_resource type="AudioStream" uid="uid://cmouanqc2d0qw" path="res://assets/bgm/fail.ogg" id="10_mcffj"]
 [ext_resource type="Shader" uid="uid://0byqru2m2mra" path="res://assets/shaders/Game.gdshader" id="10_qy1jj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3xj3m"]
@@ -295,6 +296,7 @@ parameters/looping = true
 stream = ExtResource("9_2rd6h")
 
 [node name="FailBGMPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=1049351015]
+stream = ExtResource("10_mcffj")
 
 [node name="MemorizeBGMPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=1916594586]
 stream = ExtResource("10_3xj3m")

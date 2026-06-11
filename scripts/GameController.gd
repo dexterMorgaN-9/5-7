@@ -53,8 +53,49 @@ func _hline(x: float, y: float) -> ColorRect:
 	r.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	return r
 
+func _mkcode() -> String:
+	var c = ""
+	for i in 6:
+		c += DIGIT_POOL[randi() % DIGIT_POOL.length()]
+	return c
+
+func _gen_codes() -> Array[String]:
+	var res: Array[String] = []
+	while res.size() < 5:
+		var c = _mkcode()
+		if !res.has(c):
+			res.append(c)
+	return res
+
+func _style_btn(btn: Button) -> void:
+	var bn = StyleBoxFlat.new()
+	bn.bg_color = Color(0,0,0,0)
+
+	var bh = StyleBoxFlat.new()
+	bh.bg_color = Color(0, 1, 0.25, 0.15)
+	bh.border_width_left = 1; bh.border_width_right = 1
+	bh.border_width_top = 1; bh.border_width_bottom = 1
+	bh.border_color = Color(0, 1, 0.25, 0.5)
+	bh.corner_radius_top_left = 4; bh.corner_radius_top_right = 4
+	bh.corner_radius_bottom_left = 4; bh.corner_radius_bottom_right = 4
+
+	var bp = StyleBoxFlat.new()
+	bp.bg_color = Color(0, 1, 0.25, 0.3)
+	bp.border_width_left = 1; bp.border_width_right = 1
+	bp.border_width_top = 1; bp.border_width_bottom = 1
+	bp.border_color = Color(0, 1, 0.25, 1.0)
+	bp.corner_radius_top_left = 4; bp.corner_radius_top_right = 4
+	bp.corner_radius_bottom_left = 4; bp.corner_radius_bottom_right = 4
+
+	btn.add_theme_stylebox_override("normal",  bn)
+	btn.add_theme_stylebox_override("hover",   bh)
+	btn.add_theme_stylebox_override("pressed", bp)
+	btn.add_theme_stylebox_override("focus",   bn)
+	btn.add_theme_color_override("font_color",       Color(0, 1, 0.25, 1))
+	btn.add_theme_color_override("font_hover_color", Color(0, 1, 0.25, 1))
+
 func _build_sidebar() -> void:
-	var _green     = Color(0, 1, 0.25, 1)
+	var _green    = Color(0, 1, 0.25, 1)
 	var green_dim = Color(0, 1, 0.25, 0.4)
 	var red       = Color(1, 0.3, 0.3, 1)
 	var grey      = Color(0.45, 0.45, 0.45, 1)
@@ -127,11 +168,11 @@ func _sb_tick(t: float) -> void:
 		if t < 10.0:
 			sb_timerval.add_theme_color_override("font_color", Color(1, 0.5, 0.1, 1))
 
-func _sb_progupdate(bidx: int) -> void:
+func _sb_progupdate(idx: int) -> void:
 	for i in 4:
-		if i < bidx:
+		if i < idx:
 			sb_dots[i].color = Color(0, 1, 0.25, 1)
-		elif i == bidx:
+		elif i == idx:
 			sb_dots[i].color = Color(0, 1, 0.25, 0.7)
 		else:
 			sb_dots[i].color = Color(0, 1, 0.25, 0.2)
@@ -144,47 +185,6 @@ func _sb_setstatus(txt: String, col: Color) -> void:
 	var dot = sidebar.get_node_or_null("SB_Dot")
 	if dot:
 		dot.color = col
-
-func _mkcode() -> String:
-	var c = ""
-	for i in 6:
-		c += DIGIT_POOL[randi() % DIGIT_POOL.length()]
-	return c
-
-func _gen_codes() -> Array[String]:
-	var res: Array[String] = []
-	while res.size() < 5:
-		var c = _mkcode()
-		if !res.has(c):
-			res.append(c)
-	return res
-
-func _style_button(btn: Button) -> void:
-	var bn = StyleBoxFlat.new()
-	bn.bg_color = Color(0,0,0,0)
-
-	var bh = StyleBoxFlat.new()
-	bh.bg_color = Color(0, 1, 0.25, 0.15)
-	bh.border_width_left = 1; bh.border_width_right = 1
-	bh.border_width_top = 1; bh.border_width_bottom = 1
-	bh.border_color = Color(0, 1, 0.25, 0.5)
-	bh.corner_radius_top_left = 4; bh.corner_radius_top_right = 4
-	bh.corner_radius_bottom_left = 4; bh.corner_radius_bottom_right = 4
-
-	var bp = StyleBoxFlat.new()
-	bp.bg_color = Color(0, 1, 0.25, 0.3)
-	bp.border_width_left = 1; bp.border_width_right = 1
-	bp.border_width_top = 1; bp.border_width_bottom = 1
-	bp.border_color = Color(0, 1, 0.25, 1.0)
-	bp.corner_radius_top_left = 4; bp.corner_radius_top_right = 4
-	bp.corner_radius_bottom_left = 4; bp.corner_radius_bottom_right = 4
-
-	btn.add_theme_stylebox_override("normal",  bn)
-	btn.add_theme_stylebox_override("hover",   bh)
-	btn.add_theme_stylebox_override("pressed", bp)
-	btn.add_theme_stylebox_override("focus",   bn)
-	btn.add_theme_color_override("font_color",       Color(0, 1, 0.25, 1))
-	btn.add_theme_color_override("font_hover_color", Color(0, 1, 0.25, 1))
 
 func _ready() -> void:
 	winscreen.hide()
@@ -214,14 +214,14 @@ func _ready() -> void:
 	$FailScreen/PlayAgainBtn.pressed.connect(_on_play_again)
 	$FailScreen/ExitBtn.pressed.connect(_on_exit)
 
-	_style_button($WinScreen/PlayAgainBtn)
-	_style_button($WinScreen/ExitBtn)
-	_style_button($FailScreen/PlayAgainBtn)
-	_style_button($FailScreen/ExitBtn)
+	_style_btn($WinScreen/PlayAgainBtn)
+	_style_btn($WinScreen/ExitBtn)
+	_style_btn($FailScreen/PlayAgainBtn)
+	_style_btn($FailScreen/ExitBtn)
 
 	_memorize_phase()
 	audio.play_memorize_bgm()
-		 
+
 func _process(_delta: float) -> void:
 	if def_tmr.time_left > 0:
 		timerdisp.text = "%.1f" % def_tmr.time_left
@@ -271,11 +271,11 @@ func _defuse_phase() -> void:
 	def_tmr.timeout.connect(_on_fail)
 	audio.play_defuse_bgm()
 
-func on_bomb_defused(bidx: int) -> void:
+func on_bomb_defused(idx: int) -> void:
 	defused += 1
 
-	if bidx < sb_dots.size():
-		sb_dots[bidx].color = Color(0, 1, 0.25, 1)
+	if idx < sb_dots.size():
+		sb_dots[idx].color = Color(0, 1, 0.25, 1)
 
 	if defused >= 4:
 		won_at = def_tmr.time_left
@@ -288,10 +288,10 @@ func on_bomb_defused(bidx: int) -> void:
 		_on_win()
 		return
 
-	var nxt = bidx + 1
+	var nxt = idx + 1
 	if nxt < 4:
-		bombs[bidx].visible = false
-		bombs[nxt].visible  = true
+		bombs[idx].visible = false
+		bombs[nxt].visible = true
 		bombs[nxt].set_locked(false)
 		_sb_progupdate(nxt)
 		_sb_setstatus("ARMED", Color(1, 0.3, 0.3, 1))

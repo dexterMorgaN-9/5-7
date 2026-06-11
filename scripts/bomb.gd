@@ -1,8 +1,8 @@
 extends Panel
 
-var correct: String = ""
+var code: String = ""
 var bidx: int = 0
-var game: Node = null
+var gnode: Node = null
 var locked: bool = true
 var defused: bool = false
 var inp: String = ""
@@ -13,7 +13,8 @@ var inp: String = ""
 @onready var anim      = $AnimationPlayer
 @onready var numpad    = $Numpad
 
-var _keys = ["1","2","3","4","5","6","7","8","9","*","0","#"]
+var keys = ["1","2","3","4","5","6","7","8","9","*","0","#"]
+
 
 func _mk_sbox(bg: Color, bw: int, bcol := Color(0,0,0,0), cr := 0) -> StyleBoxFlat:
 	var s = StyleBoxFlat.new()
@@ -26,6 +27,23 @@ func _mk_sbox(bg: Color, bw: int, bcol := Color(0,0,0,0), cr := 0) -> StyleBoxFl
 		s.corner_radius_bottom_right = cr; s.corner_radius_bottom_left = cr
 	return s
 
+func _ready() -> void:
+	var transp = StyleBoxFlat.new()
+	transp.bg_color = Color(0, 0, 0, 0)
+	add_theme_stylebox_override("panel", transp)
+	$BombNumLabel.hide()
+
+func setup(c: String, idx: int, g: Node) -> void:
+	code = c
+	bidx = idx
+	gnode = g
+	inp = ""
+	numlbl.text = "BOMB %d/4" % (idx + 1)
+	statuslbl.text = "ARMED"
+	statuslbl.add_theme_color_override("font_color", Color(1, 0.26, 0.26, 1))
+	codeinput.text = ""
+	_build_numpad()
+
 func _build_numpad() -> void:
 	for child in numpad.get_children():
 		child.queue_free()
@@ -34,7 +52,7 @@ func _build_numpad() -> void:
 	var s_hover = _mk_sbox(Color(0, 1, 0.2, 0.18), 1, Color(0, 1, 0.25, 0.55), 3)
 	var s_press = _mk_sbox(Color(0, 1, 0.35, 0.50), 1, Color(0, 1, 0.254, 1), 3)
 
-	for k in _keys:
+	for k in keys:
 		var btn = Button.new()
 		btn.text = ""
 		btn.custom_minimum_size = Vector2(25, 20)
@@ -47,23 +65,6 @@ func _build_numpad() -> void:
 		btn.pressed.connect(_on_key.bind(k))
 		numpad.add_child(btn)
 
-func _ready() -> void:
-	var transparent = StyleBoxFlat.new()
-	transparent.bg_color = Color(0, 0, 0, 0)
-	add_theme_stylebox_override("panel", transparent)
-	$BombNumLabel.hide()
-
-func setup(code: String, idx: int, gnode: Node) -> void:
-	correct = code
-	bidx    = idx
-	game    = gnode
-	inp = ""
-	numlbl.text  = "BOMB %d/4" % (idx + 1)
-	statuslbl.text = "ARMED"
-	statuslbl.add_theme_color_override("font_color", Color(1, 0.26, 0.26, 1))
-	codeinput.text = ""
-	_build_numpad()
-
 func set_locked(val: bool) -> void:
 	locked = val
 	numpad.modulate.a = 0.0 if val else 1.0
@@ -74,6 +75,24 @@ func set_locked(val: bool) -> void:
 	else:
 		statuslbl.text = "LOCKED"
 		statuslbl.add_theme_color_override("font_color", Color(0.5, 0.5, 0.5, 1))
+
+func _on_key(k: String) -> void:
+	if locked or defused: return
+	gnode.audio.play_click()
+
+	match k:
+		"*":
+			if inp.length() > 0:
+				inp = inp.left(inp.length() - 1)
+				codeinput.text = inp
+		"#":
+			_check()
+		_:
+			if inp.length() < 6:
+				inp += k
+				codeinput.text = inp
+				if inp.length() == 6:
+					_check()
 
 func _input(event: InputEvent) -> void:
 	if locked or defused: return
@@ -96,39 +115,21 @@ func _input(event: InputEvent) -> void:
 	get_viewport().set_input_as_handled()
 
 func _check() -> void:
-	if inp == correct:
+	if inp == code:
 		_defuse()
 	else:
 		_wrong()
-
-func _on_key(k: String) -> void:
-	if locked or defused: return
-	game.audio.play_click()
-
-	match k:
-		"*":
-			if inp.length() > 0:
-				inp = inp.left(inp.length() - 1)
-				codeinput.text = inp
-		"#":
-			_check()
-		_:
-			if inp.length() < 6:
-				inp += k
-				codeinput.text = inp
-				if inp.length() == 6:
-					_check()
 
 func _defuse() -> void:
 	defused = true
 	locked  = true
 	numpad.modulate.a = 0.0
 	numpad.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	codeinput.text = correct
+	codeinput.text = code
 	statuslbl.text = " DEFUSED"
 	statuslbl.add_theme_color_override("font_color", Color(0, 1, 0.25, 1))
 	anim.play("defuse_flash")
-	game.on_bomb_defused(bidx)
+	gnode.on_bomb_defused(bidx)
 
 func _wrong() -> void:
 	inp = ""
@@ -136,7 +137,7 @@ func _wrong() -> void:
 	statuslbl.text = "WRONG — RETRY"
 	statuslbl.add_theme_color_override("font_color", Color(1, 0.3, 0.1, 1))
 	anim.play("wrong_flash")
-	game.audio.play_beep()
+	gnode.audio.play_beep()
 	await get_tree().create_timer(0.8).timeout
 	if !defused:
 		statuslbl.text = "ENTER CODE"
