@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://nku7yoch175l" path="res://assets/bgm/menu_bgm.ogg" id="6_7la6k"]
 [ext_resource type="AudioStream" uid="uid://cjhceqxmvwkps" path="res://assets/bgm/defuse_bgm.ogg" id="7_2nypq"]
 [ext_resource type="AudioStream" uid="uid://c6en37dmhhnxb" path="res://assets/bgm/win_bgm.ogg" id="8_bky6r"]
+[ext_resource type="AudioStream" uid="uid://cja05f6qcf5hk" path="res://assets/bgm/memorize_bgm.ogg" id="9_7la6k"]
 [ext_resource type="Shader" uid="uid://0byqru2m2mra" path="res://assets/shaders/Game.gdshader" id="9_8a8k8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ykhv"]
@@ -186,6 +187,9 @@ parameters/looping = true
 stream = ExtResource("8_bky6r")
 
 [node name="FailBGMPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=411065414]
+
+[node name="MemorizeBGMPlayer" type="AudioStreamPlayer" parent="AudioManager" unique_id=295343854]
+stream = ExtResource("9_7la6k")
 
 [node name="BGOverlay" type="ColorRect" parent="." unique_id=1485350655]
 z_index = -1

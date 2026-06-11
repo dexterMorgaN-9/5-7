@@ -6,7 +6,6 @@ var game: Node = null
 var locked: bool = true
 var defused: bool = false
 var inp: String = ""
-var _last_key = null
 
 @onready var codeinput = $CodeInput
 @onready var statuslbl = $StatusLabel
@@ -37,8 +36,8 @@ func _build_numpad() -> void:
 
 	for k in _keys:
 		var btn = Button.new()
-		btn.text = k
-		btn.custom_minimum_size = Vector2(25, 18)
+		btn.text = ""
+		btn.custom_minimum_size = Vector2(25, 20)
 		btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 		btn.add_theme_stylebox_override("normal",   s_norm)
 		btn.add_theme_stylebox_override('hover',    s_hover)

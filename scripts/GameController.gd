@@ -1,6 +1,6 @@
 extends Node2D
 
-const MEM_TIME = 15
+const MEM_TIME = 14.5
 const DEF_TIME = 30
 const DIGIT_POOL = "1234567890"
 
@@ -26,7 +26,7 @@ var sidebar: Control = null
 var divider: ColorRect = null
 var sb_timerval: Label = null
 var sb_dots: Array = []
-var _tmp = null
+
 
 func _make_sbox(col: Color) -> StyleBoxFlat:
 	var s = StyleBoxFlat.new()
@@ -54,7 +54,7 @@ func _hline(x: float, y: float) -> ColorRect:
 	return r
 
 func _build_sidebar() -> void:
-	var green     = Color(0, 1, 0.25, 1)
+	var _green     = Color(0, 1, 0.25, 1)
 	var green_dim = Color(0, 1, 0.25, 0.4)
 	var red       = Color(1, 0.3, 0.3, 1)
 	var grey      = Color(0.45, 0.45, 0.45, 1)
@@ -188,7 +188,8 @@ func _ready() -> void:
 	$FailScreen/ExitBtn.pressed.connect(_on_exit)
 
 	_memorize_phase()
-
+	audio.play_memorize_bgm()
+		 
 func _process(_delta: float) -> void:
 	if def_tmr.time_left > 0:
 		timerdisp.text = "%.1f" % def_tmr.time_left
