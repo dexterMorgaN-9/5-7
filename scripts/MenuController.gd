@@ -48,6 +48,14 @@ func _apply_styles() -> void:
 	bb.add_theme_color_override("font_color",       Color(0, 1, 0.25, 1))
 	bb.add_theme_color_override("font_hover_color",  Color(0, 1, 0.25, 1))
 
+	for btn in $VBoxContainer.get_children():
+		btn.add_theme_stylebox_override("normal",  bn)
+		btn.add_theme_stylebox_override("hover",   bh)
+		btn.add_theme_stylebox_override("pressed", bp)
+		btn.add_theme_stylebox_override("focus",   bn)
+		btn.add_theme_color_override("font_color",       Color(0, 1, 0.25, 1))
+		btn.add_theme_color_override("font_hover_color", Color(0, 1, 0.25, 1))
+
 func _load_settings() -> void:
 	var cfg = ConfigFile.new()
 	if cfg.load(SAVE_PATH) == OK:

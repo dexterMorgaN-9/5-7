@@ -159,6 +159,33 @@ func _gen_codes() -> Array[String]:
 			res.append(c)
 	return res
 
+func _style_button(btn: Button) -> void:
+	var bn = StyleBoxFlat.new()
+	bn.bg_color = Color(0,0,0,0)
+
+	var bh = StyleBoxFlat.new()
+	bh.bg_color = Color(0, 1, 0.25, 0.15)
+	bh.border_width_left = 1; bh.border_width_right = 1
+	bh.border_width_top = 1; bh.border_width_bottom = 1
+	bh.border_color = Color(0, 1, 0.25, 0.5)
+	bh.corner_radius_top_left = 4; bh.corner_radius_top_right = 4
+	bh.corner_radius_bottom_left = 4; bh.corner_radius_bottom_right = 4
+
+	var bp = StyleBoxFlat.new()
+	bp.bg_color = Color(0, 1, 0.25, 0.3)
+	bp.border_width_left = 1; bp.border_width_right = 1
+	bp.border_width_top = 1; bp.border_width_bottom = 1
+	bp.border_color = Color(0, 1, 0.25, 1.0)
+	bp.corner_radius_top_left = 4; bp.corner_radius_top_right = 4
+	bp.corner_radius_bottom_left = 4; bp.corner_radius_bottom_right = 4
+
+	btn.add_theme_stylebox_override("normal",  bn)
+	btn.add_theme_stylebox_override("hover",   bh)
+	btn.add_theme_stylebox_override("pressed", bp)
+	btn.add_theme_stylebox_override("focus",   bn)
+	btn.add_theme_color_override("font_color",       Color(0, 1, 0.25, 1))
+	btn.add_theme_color_override("font_hover_color", Color(0, 1, 0.25, 1))
+
 func _ready() -> void:
 	winscreen.hide()
 	failscreen.hide()
@@ -186,6 +213,11 @@ func _ready() -> void:
 	$WinScreen/ExitBtn.pressed.connect(_on_exit)
 	$FailScreen/PlayAgainBtn.pressed.connect(_on_play_again)
 	$FailScreen/ExitBtn.pressed.connect(_on_exit)
+
+	_style_button($WinScreen/PlayAgainBtn)
+	_style_button($WinScreen/ExitBtn)
+	_style_button($FailScreen/PlayAgainBtn)
+	_style_button($FailScreen/ExitBtn)
 
 	_memorize_phase()
 	audio.play_memorize_bgm()
