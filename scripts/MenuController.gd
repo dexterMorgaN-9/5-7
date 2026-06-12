@@ -77,6 +77,13 @@ func _apply_styles() -> void:
 		btn.add_theme_color_override("font_color",       Color(0, 1, 0.25, 1))
 		btn.add_theme_color_override("font_hover_color", Color(0, 1, 0.25, 1))
 
+	$InfoButton.add_theme_stylebox_override("normal",  bn)
+	$InfoButton.add_theme_stylebox_override("hover",   bh)
+	$InfoButton.add_theme_stylebox_override("pressed", bp)
+	$InfoButton.add_theme_stylebox_override("focus",   bn)
+	$InfoButton.add_theme_color_override("font_color",       Color(0, 1, 0.25, 1))
+	$InfoButton.add_theme_color_override("font_hover_color", Color(0, 1, 0.25, 1))
+
 func _ready() -> void:
 	settings_panel.hide()
 	_load_settings()

@@ -1,7 +1,7 @@
 extends Node2D
 
 const MEM_TIME = 14.5
-const DEF_TIME = 30
+const DEF_TIME = 35
 const DIGIT_POOL = "1234567890"
 
 @onready var codelabels = [$CodeDisplay/Code1, $CodeDisplay/Code2,
